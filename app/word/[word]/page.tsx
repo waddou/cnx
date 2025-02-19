@@ -133,7 +133,12 @@ export default function WordPage({ params }: WordPageProps) {
           <ul className="space-y-4">
             {definitions.map((def) => (
               <li key={def.id} className="border-b border-gray-200 pb-4 last:border-0">
-                <p className="text-gray-700">- {def.definition}</p>
+                <Link 
+                  href={`/definition/${encodeURIComponent(def.definition.replace(/ /g, '*'))}`}
+                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                >
+                  - {def.definition}
+                </Link>
               </li>
             ))}
           </ul>
@@ -153,7 +158,12 @@ export default function WordPage({ params }: WordPageProps) {
           <ul className="space-y-4">
             {crosswordDefinitions.map((def) => (
               <li key={def.id} className="border-b border-gray-200 pb-4 last:border-0">
-                <p className="text-gray-700">- {def.definition}</p>
+                <Link 
+                  href={`/definition/${encodeURIComponent(def.definition.replace(/ /g, '*'))}`}
+                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                >
+                  - {def.definition}
+                </Link>
               </li>
             ))}
           </ul>
@@ -171,7 +181,7 @@ export default function WordPage({ params }: WordPageProps) {
             {relatedExpressions.map((expr) => (
               <li key={expr.id} className="border-b border-gray-200 pb-4 last:border-0">
                 <Link
-                  href={`/word/${encodeURIComponent(expr.expression.toLowerCase())}`}
+                  href={`/definition/${encodeURIComponent(expr.expression.toLowerCase().replace(/ /g, '*'))}`}
                   className="text-blue-600 hover:text-blue-800"
                 >
                   - {expr.expression}

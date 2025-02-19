@@ -5,6 +5,17 @@ import Link from "next/link"
 export default function Home() {
   const recentWords = db.findRecentWords(10)
 
+  // Trouver les définitions populaires (reliées à plus de 3 mots)
+  const definitionCounts = db.crosswordDefinitions.reduce((acc, def) => {
+    acc[def.definition] = (acc[def.definition] || 0) + 1
+    return acc
+  }, {} as Record<string, number>)
+
+  const popularDefinitions = Object.entries(definitionCounts)
+    .filter(([_, count]) => count > 3)
+    .map(([definition]) => definition)
+    .slice(0, 6) // Limiter à 6 définitions
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-900 via-blue-600 to-blue-400 pt-16">
       <main className="mx-auto max-w-4xl px-4 py-12">
@@ -17,6 +28,28 @@ export default function Home() {
         </p>
 
         <SearchForm />
+
+        {popularDefinitions.length > 0 && (
+          <div className="mt-12">
+            <h2 className="mb-6 text-2xl font-semibold text-white">Définitions du moment</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {popularDefinitions.map((definition) => (
+                <Link
+                  key={definition}
+                  href={`/definition/${encodeURIComponent(definition.replace(/ /g, '*'))}`}
+                  className="block bg-white/95 rounded-lg p-4 hover:bg-white/100 transition-colors"
+                >
+                  <h3 className="text-lg font-medium text-blue-800">
+                    {definition}
+                  </h3>
+                  <p className="text-sm text-blue-600 mt-1">
+                    {definitionCounts[definition]} solutions
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
 
         {recentWords.length > 0 && (
           <div className="mt-12">

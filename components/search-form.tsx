@@ -146,28 +146,6 @@ export function SearchForm() {
           </p>
         </div>
       </Card>
-
-      <Card className="mt-8 bg-white/95 p-6">
-        <h2 className="mb-4 flex items-center gap-2 text-xl font-semibold text-blue-800">
-          <Search className="h-5 w-5" />
-          10 derniers mots consultés
-        </h2>
-        <div className="space-y-3">
-          {RECENT_WORDS.map((word) => (
-            <div key={word.word} className="border-b border-gray-200 pb-3 last:border-0">
-              <div className="block rounded p-2 -mx-2">
-                <Link 
-                  href={`/word/${encodeURIComponent(word.word.toLowerCase())}`}
-                  className="font-medium text-blue-600 hover:text-blue-700 hover:underline"
-                >
-                  {word.word}
-                </Link>
-                <p className="text-sm text-gray-600">{word.definition}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </Card>
     </div>
   )
 }

@@ -930,6 +930,406 @@ export const db = {
       createdAt: "2024-02-01T00:00:00.000Z",
       updatedAt: null,
       status: "APPROVED"
+    },
+    {
+      id: 400,
+      word: "CYAN",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 401,
+      word: "CHAIR",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 402,
+      word: "DONNEES",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 403,
+      word: "RUDIMENTAIRES",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 404,
+      word: "ELEMENTAIRE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 405,
+      word: "TON",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 406,
+      word: "OR",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 407,
+      word: "ROUILLE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 408,
+      word: "VERMEIL",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 409,
+      word: "GREGE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 410,
+      word: "FIGURE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 411,
+      word: "CAMAIEU",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 412,
+      word: "ROSEORANGE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 413,
+      word: "OUTREMER",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 414,
+      word: "BIS",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 415,
+      word: "VIOLET",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 416,
+      word: "GRENAT",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 417,
+      word: "AUBURN",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 418,
+      word: "ATOUT",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 419,
+      word: "TEINTURE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 420,
+      word: "VELCRO",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 421,
+      word: "EMBOLIE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 422,
+      word: "ZIP",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 423,
+      word: "GLISSIERE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 424,
+      word: "FAILLITE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 425,
+      word: "TIRETTE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 426,
+      word: "ZIPPEE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 427,
+      word: "ZIPPE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 428,
+      word: "ZIPPER",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 429,
+      word: "BRAGUETTE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 430,
+      word: "BEA",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 431,
+      word: "VERROU",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 432,
+      word: "ABRI",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 433,
+      word: "SERRURE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 434,
+      word: "CLOTURE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 435,
+      word: "RIDEAU",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 436,
+      word: "EPAR",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 437,
+      word: "BOUCHAGE",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 438,
+      word: "ILEUS",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 439,
+      word: "EPART",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
     }
   ] as Word[],
 
@@ -1382,6 +1782,300 @@ export const db = {
       id: 10,
       wordId: 6,
       definition: "PATISSERIE ALLONGEE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 101,
+      wordId: 400,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 102,
+      wordId: 401,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 103,
+      wordId: 402,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 104,
+      wordId: 403,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 105,
+      wordId: 404,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 106,
+      wordId: 405,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 107,
+      wordId: 406,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 108,
+      wordId: 407,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 109,
+      wordId: 408,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 110,
+      wordId: 409,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 111,
+      wordId: 410,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 112,
+      wordId: 411,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 113,
+      wordId: 412,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 114,
+      wordId: 413,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 115,
+      wordId: 414,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 116,
+      wordId: 415,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 117,
+      wordId: 416,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 118,
+      wordId: 417,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 119,
+      wordId: 418,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 120,
+      wordId: 419,
+      definition: "COULEUR DE BASE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 121,
+      wordId: 420,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 122,
+      wordId: 421,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 123,
+      wordId: 422,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 124,
+      wordId: 423,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 125,
+      wordId: 424,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 126,
+      wordId: 425,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 127,
+      wordId: 426,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 128,
+      wordId: 427,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 129,
+      wordId: 428,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 130,
+      wordId: 429,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 131,
+      wordId: 430,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 132,
+      wordId: 431,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 133,
+      wordId: 432,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 134,
+      wordId: 433,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 135,
+      wordId: 434,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 136,
+      wordId: 435,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 137,
+      wordId: 436,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 138,
+      wordId: 437,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 139,
+      wordId: 438,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 140,
+      wordId: 439,
+      definition: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 141,
+      wordId: 420,
+      definition: "OPERATION ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 142,
+      wordId: 421,
+      definition: "OUVERTURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 143,
+      wordId: 422,
+      definition: "COURRIER ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 144,
+      wordId: 423,
+      definition: "PETIT ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 145,
+      wordId: 424,
+      definition: "ECLAIR CEREBRAL",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 146,
+      wordId: 425,
+      definition: "PASSAGES ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 147,
+      wordId: 426,
+      definition: "VISITE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 148,
+      wordId: 427,
+      definition: "ECLAIR LUMINEUX",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 149,
+      wordId: 428,
+      definition: "OPERATION ECLAIR",
       createdAt: "2024-02-01T00:00:00.000Z"
     }
   ] as CrosswordDefinition[],
