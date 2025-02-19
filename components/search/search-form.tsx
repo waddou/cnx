@@ -4,10 +4,13 @@ import { useState } from "react"
 import { Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import Link from "next/link"
 
 interface SearchResult {
   word: string
   definition: string
+  category: string
+  difficulty: string
 }
 
 export function SearchForm() {
@@ -67,11 +70,16 @@ export function SearchForm() {
 
       {results.length > 0 && (
         <div className="rounded-lg border bg-white p-4">
-          <h2 className="mb-4 text-lg font-semibold">Résultats</h2>
+          <h2 className="mb-4 text-lg font-semibold">Résultats 22</h2>
           <ul className="space-y-2">
             {results.map((result, index) => (
               <li key={index} className="flex flex-col">
-                <span className="font-medium text-blue-600">{result.word}</span>
+                <Link 
+                  href={`/word/${encodeURIComponent(result.word.toLowerCase())}`}
+                  className="font-medium text-blue-600 hover:text-blue-700 hover:underline"
+                >
+                  {result.word}
+                </Link>
                 <span className="text-sm text-gray-600">{result.definition}</span>
               </li>
             ))}
@@ -81,4 +89,3 @@ export function SearchForm() {
     </div>
   )
 }
-

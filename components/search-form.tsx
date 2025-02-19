@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { Search } from "lucide-react"
+import Link from "next/link"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -11,6 +12,8 @@ import { toast } from "sonner"
 interface SearchResult {
   word: string
   definition: string
+  category: string
+  difficulty: string
 }
 
 const RECENT_WORDS = [
@@ -110,7 +113,12 @@ export function SearchForm() {
           <ul className="space-y-3">
             {results.map((result, index) => (
               <li key={index} className="flex flex-col">
-                <span className="font-medium text-blue-600">{result.word}</span>
+                <Link 
+                  href={`/word/${encodeURIComponent(result.word.toLowerCase())}`}
+                  className="font-medium text-blue-600 hover:text-blue-700 hover:underline"
+                >
+                  {result.word}
+                </Link>
                 <span className="text-sm text-gray-600">{result.definition}</span>
               </li>
             ))}
@@ -147,10 +155,15 @@ export function SearchForm() {
         <div className="space-y-3">
           {RECENT_WORDS.map((word) => (
             <div key={word.word} className="border-b border-gray-200 pb-3 last:border-0">
-              <a href={`/word/${encodeURIComponent(word.word)}`} className="block hover:bg-gray-50 rounded p-2 -mx-2">
-                <span className="font-medium text-blue-600">{word.word}</span>
+              <div className="block rounded p-2 -mx-2">
+                <Link 
+                  href={`/word/${encodeURIComponent(word.word.toLowerCase())}`}
+                  className="font-medium text-blue-600 hover:text-blue-700 hover:underline"
+                >
+                  {word.word}
+                </Link>
                 <p className="text-sm text-gray-600">{word.definition}</p>
-              </a>
+              </div>
             </div>
           ))}
         </div>

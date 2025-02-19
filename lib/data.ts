@@ -90,6 +90,16 @@ export interface WordDefinition {
   definition: string
   isMainDefinition: boolean
   createdAt: string
+  source?: string
+  example?: string
+}
+
+export interface WordUsage {
+  id: number
+  wordId: number
+  usage: string
+  source: string
+  createdAt: string
 }
 
 export interface Puzzle {
@@ -115,6 +125,26 @@ export interface PuzzleAttempt {
   userId: string
   attempt: string
   isCorrect: boolean
+  createdAt: string
+}
+
+export interface RecentWord {
+  id: number
+  wordId: number
+  viewedAt: string
+}
+
+export interface CrosswordDefinition {
+  id: number
+  wordId: number
+  definition: string
+  createdAt: string
+}
+
+export interface RelatedExpression {
+  id: number
+  wordId: number
+  expression: string
   createdAt: string
 }
 
@@ -351,6 +381,556 @@ export const db = {
       updatedAt: null,
       status: "APPROVED",
     },
+    {
+      id: 101,
+      word: "CALIER",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 102,
+      word: "CLAIRE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 201,
+      word: "FULGURATION",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 202,
+      word: "FOUDRE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 203,
+      word: "ECLAT",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 204,
+      word: "FLAMME",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 205,
+      word: "LUEUR",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 206,
+      word: "FLASH",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 207,
+      word: "EBLOUISSEMENT",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 208,
+      word: "MESSAGE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 209,
+      word: "SPOT",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 210,
+      word: "LUMIERE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 211,
+      word: "CLARTE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 212,
+      word: "RAYON",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 213,
+      word: "SCINTILLEMENT",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 214,
+      word: "ETINCELLE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 215,
+      word: "ILLUMINATION",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 216,
+      word: "FULGURANCE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 217,
+      word: "LUISANCE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 218,
+      word: "PHOSPHORESCENCE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 219,
+      word: "FEU",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 220,
+      word: "TONNERRE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 221,
+      word: "ORAGE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 222,
+      word: "TEMPETE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 300,
+      word: "APARI",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 301,
+      word: "APENS",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 302,
+      word: "APERO",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 303,
+      word: "APEXO",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 304,
+      word: "APGAR",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 305,
+      word: "APHIS",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 306,
+      word: "APHTE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 307,
+      word: "APICS",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 308,
+      word: "APIDE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 309,
+      word: "APIED",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 310,
+      word: "APIOL",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 311,
+      word: "APION",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 312,
+      word: "APLAT",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 313,
+      word: "APLET",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 314,
+      word: "APNEE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 315,
+      word: "APOCO",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 316,
+      word: "APODE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 317,
+      word: "APOIL",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 318,
+      word: "APPAS",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 319,
+      word: "APPAT",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 320,
+      word: "APPEL",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 321,
+      word: "APPLE",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 322,
+      word: "APPLI",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 323,
+      word: "APPUI",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 324,
+      word: "APRAT",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 325,
+      word: "APREM",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 326,
+      word: "APRES",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 327,
+      word: "APTES",
+      categoryId: 1,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 328,
+      word: "APURA",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 329,
+      word: "APURE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 330,
+      word: "APYRE",
+      categoryId: 1,
+      difficultyId: 2,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    }
   ] as Word[],
 
   categories: [
@@ -377,7 +957,162 @@ export const db = {
 
   notifications: [] as Notification[],
 
-  wordRelations: [] as WordRelation[],
+  wordRelations: [
+    {
+      id: 1,
+      wordId1: 6, // ECLAIR
+      wordId2: 201, // FULGURATION
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 2,
+      wordId1: 6,
+      wordId2: 202, // FOUDRE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 3,
+      wordId1: 6,
+      wordId2: 203, // ECLAT
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 4,
+      wordId1: 6,
+      wordId2: 204, // FLAMME
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 5,
+      wordId1: 6,
+      wordId2: 205, // LUEUR
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 6,
+      wordId1: 6,
+      wordId2: 206, // FLASH
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 7,
+      wordId1: 6,
+      wordId2: 207, // EBLOUISSEMENT
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 8,
+      wordId1: 6,
+      wordId2: 208, // MESSAGE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 9,
+      wordId1: 6,
+      wordId2: 209, // SPOT
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 10,
+      wordId1: 6,
+      wordId2: 210, // LUMIERE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 11,
+      wordId1: 6,
+      wordId2: 211, // CLARTE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 12,
+      wordId1: 6,
+      wordId2: 212, // RAYON
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 13,
+      wordId1: 6,
+      wordId2: 213, // SCINTILLEMENT
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 14,
+      wordId1: 6,
+      wordId2: 214, // ETINCELLE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 15,
+      wordId1: 6,
+      wordId2: 215, // ILLUMINATION
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 16,
+      wordId1: 6,
+      wordId2: 216, // FULGURANCE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 17,
+      wordId1: 6,
+      wordId2: 217, // LUISANCE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 18,
+      wordId1: 6,
+      wordId2: 218, // PHOSPHORESCENCE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 19,
+      wordId1: 6,
+      wordId2: 219, // FEU
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 20,
+      wordId1: 6,
+      wordId2: 220, // TONNERRE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 21,
+      wordId1: 6,
+      wordId2: 221, // ORAGE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 22,
+      wordId1: 6,
+      wordId2: 222, // TEMPETE
+      relationType: "SYNONYM",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    }
+  ] as WordRelation[],
 
   wordDefinitions: [
     {
@@ -418,109 +1153,308 @@ export const db = {
     {
       id: 6,
       wordId: 6,
-      definition: "Lumière brève",
+      definition: "Lumière vive et soudaine causée par la foudre, qui brille entre les nuages et qui précède le bruit du tonnerre lors d'un orage.",
       isMainDefinition: true,
-      createdAt: "2024-02-01T00:00:00.000Z",
+      createdAt: "2024-02-01T00:00:00.000Z"
     },
     {
       id: 7,
+      wordId: 6,
+      definition: "Éclat fugace.",
+      isMainDefinition: false,
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 8,
+      wordId: 6,
+      definition: "Manifestation brusque et rapide.",
+      isMainDefinition: false,
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 9,
+      wordId: 6,
+      definition: "Tout éclat de lumière étincelante et mobile qui paraît à la surface des objets.",
+      isMainDefinition: false,
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 10,
+      wordId: 6,
+      definition: "Gâteau en longueur, fait d'une pâte à choux, glacée sur le dessus, et fourrée de crème pâtissière à l'intérieur.",
+      isMainDefinition: false,
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 11,
+      wordId: 6,
+      definition: "Synonyme de anomie pelure (espèce d'animaux).",
+      isMainDefinition: false,
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 12,
+      wordId: 6,
+      definition: "Très rapide.",
+      isMainDefinition: false,
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 13,
       wordId: 7,
       definition: "Simple",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 8,
+      id: 14,
       wordId: 8,
       definition: "Remporter",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 9,
+      id: 15,
       wordId: 9,
       definition: "Traction d'un bateau",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 10,
+      id: 16,
       wordId: 10,
       definition: "Ignorant",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 11,
+      id: 17,
       wordId: 11,
       definition: "Charcuterie",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 12,
+      id: 18,
       wordId: 12,
       definition: "Embarcation",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 13,
+      id: 19,
       wordId: 13,
       definition: "Jeter",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 14,
+      id: 20,
       wordId: 14,
       definition: "S'alimenter",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 15,
+      id: 21,
       wordId: 15,
       definition: "Couvrir d'une sauce",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 16,
+      id: 22,
       wordId: 16,
       definition: "Intervenir chirurgicalement",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 17,
+      id: 23,
       wordId: 17,
       definition: "Rame courte",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 18,
+      id: 24,
       wordId: 18,
       definition: "Minéral",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 19,
+      id: 25,
       wordId: 19,
       definition: "Véloce",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
     {
-      id: 20,
+      id: 26,
       wordId: 20,
       definition: "Boire d'un trait",
       isMainDefinition: true,
       createdAt: "2024-02-01T00:00:00.000Z",
     },
   ] as WordDefinition[],
+
+  wordUsages: [
+    {
+      id: 1,
+      wordId: 6,
+      usage: "L'éclair a illuminé le ciel nocturne",
+      source: "Littérature",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 2,
+      wordId: 6,
+      usage: "Un délicieux éclair au chocolat",
+      source: "Gastronomie",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 3,
+      wordId: 6,
+      usage: "Il est passé comme un éclair",
+      source: "Expression courante",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    }
+  ] as WordUsage[],
+
+  crosswordDefinitions: [
+    {
+      id: 1,
+      wordId: 6,
+      definition: "RENNE DU PERE NOEL",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 2,
+      wordId: 6,
+      definition: "MOMENT DE GENIE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 3,
+      wordId: 6,
+      definition: "MOMENT TRES COURT",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 4,
+      wordId: 6,
+      definition: "IL TOMBE DES NUES",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 5,
+      wordId: 6,
+      definition: "IL EST FOURRE A LA CREME",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 6,
+      wordId: 6,
+      definition: "MANIFESTATION SOUDAINE ET PASSAGERE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 7,
+      wordId: 6,
+      definition: "LUMIERE VIVE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 8,
+      wordId: 6,
+      definition: "CHOU ALLONGE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 9,
+      wordId: 6,
+      definition: "ATTRIBUT DE ZEUS",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 10,
+      wordId: 6,
+      definition: "PATISSERIE ALLONGEE",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    }
+  ] as CrosswordDefinition[],
+
+  relatedExpressions: [
+    {
+      id: 1,
+      wordId: 6,
+      expression: "FERMETURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 2,
+      wordId: 6,
+      expression: "OPERATION ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 3,
+      wordId: 6,
+      expression: "OUVERTURE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 4,
+      wordId: 6,
+      expression: "COURRIER ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 5,
+      wordId: 6,
+      expression: "PETIT ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 6,
+      wordId: 6,
+      expression: "ECLAIR CEREBRAL",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 7,
+      wordId: 6,
+      expression: "PASSAGES ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 8,
+      wordId: 6,
+      expression: "VISITE ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 9,
+      wordId: 6,
+      expression: "ECLAIR LUMINEUX",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    }
+  ] as RelatedExpression[],
+
+  recentWords: [
+    {
+      id: 1,
+      wordId: 6, // ECLAIR
+      viewedAt: "2024-02-19T09:30:00.000Z"
+    },
+    {
+      id: 2,
+      wordId: 1, // EBAUBIR
+      viewedAt: "2024-02-19T09:15:00.000Z"
+    }
+  ] as RecentWord[],
 
   puzzles: [] as Puzzle[],
 
@@ -615,6 +1549,124 @@ export const db = {
         d.isMainDefinition = d.id === definitionId
       }
     })
+  },
+
+  findWordUsagesByWordId(wordId: number) {
+    return this.wordUsages.filter(u => u.wordId === wordId)
+  },
+
+  findCrosswordDefinitionsByWordId(wordId: number) {
+    return this.crosswordDefinitions.filter(d => d.wordId === wordId)
+  },
+
+  findRelatedExpressionsByWordId(wordId: number) {
+    return this.relatedExpressions.filter(e => e.wordId === wordId)
+  },
+
+  findRecentWords(limit: number = 10) {
+    return this.recentWords
+      .sort((a, b) => new Date(b.viewedAt).getTime() - new Date(a.viewedAt).getTime())
+      .slice(0, limit)
+      .map(rw => {
+        const word = this.findWordById(rw.wordId)
+        return {
+          ...word,
+          viewedAt: rw.viewedAt
+        }
+      })
+  },
+
+  addRecentWord(wordId: number) {
+    const now = new Date().toISOString()
+    const newId = Math.max(...this.recentWords.map(rw => rw.id)) + 1
+    
+    // Vérifier si le mot existe déjà dans les récents
+    const existingIndex = this.recentWords.findIndex(rw => rw.wordId === wordId)
+    
+    if (existingIndex !== -1) {
+      // Mettre à jour la date de consultation
+      this.recentWords[existingIndex].viewedAt = now
+    } else {
+      // Ajouter un nouveau mot récent
+      this.recentWords.push({
+        id: newId,
+        wordId,
+        viewedAt: now
+      })
+    }
+    
+    // Garder seulement les 10 derniers mots
+    this.recentWords = this.recentWords
+      .sort((a, b) => new Date(b.viewedAt).getTime() - new Date(a.viewedAt).getTime())
+      .slice(0, 10)
+  },
+
+  getWordStats(wordId: number) {
+    const word = this.findWordById(wordId)
+    if (!word) return null
+
+    // Récupérer toutes les définitions
+    const definitions = this.findWordDefinitionsByWordId(wordId)
+    
+    // Récupérer les synonymes
+    const synonyms = this.wordRelations
+      .filter(r => (r.wordId1 === wordId || r.wordId2 === wordId) && r.relationType === "SYNONYM")
+      .map(r => {
+        const relatedWordId = r.wordId1 === wordId ? r.wordId2 : r.wordId1
+        return this.findWordById(relatedWordId)
+      })
+      .filter(w => w !== undefined)
+
+    // Récupérer les anagrammes
+    const anagrams = this.words
+      .filter(w => {
+        if (w.id === wordId) return false
+        return this.isAnagram(word.word, w.word)
+      })
+
+    // Récupérer les solutions de mots croisés
+    const crosswordSolutions = this.words
+      .filter(w => w.word.length >= 3 && w.word.length <= 10)
+      .filter(w => this.areLettersContained(word.word, w.word))
+
+    return {
+      word: word.word,
+      solutionsCount: crosswordSolutions.length,
+      solutionsLengthRange: {
+        min: Math.min(...crosswordSolutions.map(w => w.word.length)),
+        max: Math.max(...crosswordSolutions.map(w => w.word.length))
+      },
+      synonymsCount: synonyms.length,
+      synonymsLengthRange: {
+        min: Math.min(...synonyms.map(w => w.word.length)),
+        max: Math.max(...synonyms.map(w => w.word.length))
+      },
+      definitionsCount: definitions.length,
+      crosswordDefinitionsCount: this.findCrosswordDefinitionsByWordId(wordId).length,
+      anagramsCount: anagrams.length
+    }
+  },
+
+  isAnagram(word1: string, word2: string): boolean {
+    if (word1.length !== word2.length) return false
+    const sortLetters = (str: string) => str.split('').sort().join('')
+    return sortLetters(word1) === sortLetters(word2)
+  },
+
+  areLettersContained(source: string, target: string): boolean {
+    const sourceLetters = source.split('').reduce((acc, letter) => {
+      acc[letter] = (acc[letter] || 0) + 1
+      return acc
+    }, {} as Record<string, number>)
+
+    const targetLetters = target.split('').reduce((acc, letter) => {
+      acc[letter] = (acc[letter] || 0) + 1
+      return acc
+    }, {} as Record<string, number>)
+
+    return Object.entries(targetLetters).every(([letter, count]) => 
+      (sourceLetters[letter] || 0) >= count
+    )
   },
 }
 
