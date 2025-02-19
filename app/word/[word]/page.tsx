@@ -49,165 +49,171 @@ export default function WordPage({ params }: WordPageProps) {
   const stats = db.getWordStats(word.id)
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-900 via-blue-600 to-blue-400 pt-16">
-      <main className="mx-auto max-w-4xl px-4 py-12">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold text-white text-center mb-4">{word.word}</h1>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <main className="container mx-auto px-4 py-12">
+        <div className="animate-fade-in mb-12 text-center">
+          <h1 className="mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-5xl font-extrabold text-transparent">
+            {word.word}
+          </h1>
           <div className="flex justify-center gap-4">
-            <span className="px-4 py-2 bg-blue-200 text-blue-800 rounded-full text-sm font-medium">
-              {category?.name}
-            </span>
-            <span className="px-4 py-2 bg-blue-200 text-blue-800 rounded-full text-sm font-medium">
-              {difficulty?.name}
-            </span>
+            {category && (
+              <span className="rounded-full bg-purple-100 px-4 py-2 text-sm font-medium text-purple-600 shadow-sm">
+                {category.name}
+              </span>
+            )}
+            {difficulty && (
+              <span className="rounded-full bg-blue-100 px-4 py-2 text-sm font-medium text-blue-600 shadow-sm">
+                {difficulty.name}
+              </span>
+            )}
           </div>
         </div>
 
         {/* Statistiques */}
-        <Card className="bg-white/95 p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4">
-            Solutions de mots croisés et mots fléchés pour {word.word}
-          </h2>
-          <ul className="space-y-2 text-gray-700">
-            <li>
-              <Link href="#solutions" className="hover:text-blue-600">
-                - {stats.solutionsCount} solutions de {stats.solutionsLengthRange.min} à {stats.solutionsLengthRange.max} lettres
-              </Link>
-            </li>
-            <li>
-              <Link href="#synonymes" className="hover:text-blue-600">
-                - {stats.synonymsCount} synonymes du mot {word.word} ({word.word.toLowerCase()}) de {stats.synonymsLengthRange.min} à {stats.synonymsLengthRange.max} lettres
-              </Link>
-            </li>
-            <li>
-              <Link href="#definitions" className="hover:text-blue-600">
-                - {stats.definitionsCount} définitions pour {word.word.toLowerCase()}
-              </Link>
-            </li>
-            <li>
-              <Link href="#mots-croises" className="hover:text-blue-600">
-                - {crosswordDefinitions.length} définitions de mots croisés et de mots fléchés avec solution pour {word.word}
-              </Link>
-            </li>
-            <li>
-              <Link href="#anagrammes" className="hover:text-blue-600">
-                - {anagrams.length} anagrammes avec les lettres {word.word} (Anacroisés)
-              </Link>
-            </li>
-          </ul>
-        </Card>
+        <div className="animate-fade-in-up grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          <Card className="transform bg-white p-6 shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl">
+            <h3 className="mb-3 text-lg font-semibold text-gray-800">Solutions</h3>
+            <p className="text-3xl font-bold text-purple-600">{stats.solutionsCount}</p>
+            <p className="mt-1 text-sm text-gray-600">
+              de {stats.solutionsLengthRange.min} à {stats.solutionsLengthRange.max} lettres
+            </p>
+          </Card>
+          <Card className="transform bg-white p-6 shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl">
+            <h3 className="mb-3 text-lg font-semibold text-gray-800">Synonymes</h3>
+            <p className="text-3xl font-bold text-blue-600">{stats.synonymsCount}</p>
+            <p className="mt-1 text-sm text-gray-600">
+              de {stats.synonymsLengthRange.min} à {stats.synonymsLengthRange.max} lettres
+            </p>
+          </Card>
+          <Card className="transform bg-white p-6 shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl">
+            <h3 className="mb-3 text-lg font-semibold text-gray-800">Définitions</h3>
+            <p className="text-3xl font-bold text-indigo-600">{stats.definitionsCount}</p>
+            <p className="mt-1 text-sm text-gray-600">
+              pour {word.word.toLowerCase()}
+            </p>
+          </Card>
+        </div>
 
         {/* Synonymes */}
-        <Card id="synonymes" className="bg-white/95 p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4">
-            {word.word} - <span className="font-normal italic">{word.word.toLowerCase()}</span>
-          </h2>
-          <h3 className="text-xl font-semibold text-blue-700 mb-3">
-            {synonyms.length} Synonymes :
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {synonyms.map((synonym) => (
-              <Link
-                key={synonym?.id}
-                href={`/word/${encodeURIComponent(synonym?.word?.toLowerCase() || '')}`}
-                className="block p-3 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors"
-              >
-                <span className="font-medium">{synonym?.word}</span>
-                <span className="text-gray-500 text-sm ml-2">({synonym?.word.length})</span>
-              </Link>
-            ))}
-          </div>
-        </Card>
+        <section id="synonymes" className="animate-slide-in-left mt-12">
+          <Card className="bg-white p-6 shadow-lg">
+            <h2 className="mb-6 text-2xl font-bold text-gray-800">
+              Synonymes de {word.word.toLowerCase()}
+              <span className="ml-2 text-lg font-normal text-gray-600">
+                ({synonyms.length})
+              </span>
+            </h2>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {synonyms.map((synonym) => (
+                <Link
+                  key={synonym?.id}
+                  href={`/word/${encodeURIComponent(synonym?.word?.toLowerCase() || '')}`}
+                  className="group rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 p-4 transition-all hover:scale-[1.02] hover:shadow-md"
+                >
+                  <span className="font-medium text-gray-800">{synonym?.word}</span>
+                  <span className="ml-2 text-sm text-gray-500">({synonym?.word.length})</span>
+                </Link>
+              ))}
+            </div>
+          </Card>
+        </section>
 
         {/* Définitions */}
-        <Card id="definitions" className="bg-white/95 p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4">
-            Définition de {word.word.toLowerCase()}
-            <span className="text-gray-600 text-lg font-normal ml-2">
-              ({definitions.length})
-            </span>
-          </h2>
-          <div className="text-gray-600 italic mb-4">
-            Cliquez sur un mot pour découvrir sa définition
-          </div>
-          <ul className="space-y-4">
-            {definitions.map((def) => (
-              <li key={def.id} className="border-b border-gray-200 pb-4 last:border-0">
-                <Link 
+        <section id="definitions" className="animate-slide-in-right mt-12">
+          <Card className="bg-white p-6 shadow-lg">
+            <h2 className="mb-6 text-2xl font-bold text-gray-800">
+              Définitions
+              <span className="ml-2 text-lg font-normal text-gray-600">
+                ({definitions.length})
+              </span>
+            </h2>
+            <div className="space-y-4">
+              {definitions.map((def) => (
+                <Link
+                  key={def.id}
                   href={`/definition/${encodeURIComponent(def.definition.replace(/ /g, '*'))}`}
-                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                  className="group block rounded-lg border border-gray-100 bg-gradient-to-r from-purple-50 to-blue-50 p-4 transition-all hover:scale-[1.01] hover:shadow-md"
                 >
-                  - {def.definition}
+                  <p className="text-gray-800">{def.definition}</p>
+                  {def.isMainDefinition && (
+                    <span className="mt-2 inline-block rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-600">
+                      Définition principale
+                    </span>
+                  )}
                 </Link>
-              </li>
-            ))}
-          </ul>
-        </Card>
+              ))}
+            </div>
+          </Card>
+        </section>
 
         {/* Définitions de mots croisés */}
-        <Card id="mots-croises" className="bg-white/95 p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4">
-            Les définitions du mot {word.word}
-            <span className="text-gray-600 text-lg font-normal ml-2">
-              ({crosswordDefinitions.length})
-            </span>
-          </h2>
-          <div className="text-gray-600 italic mb-4">
-            Cliquez sur un mot pour découvrir sa définition
-          </div>
-          <ul className="space-y-4">
-            {crosswordDefinitions.map((def) => (
-              <li key={def.id} className="border-b border-gray-200 pb-4 last:border-0">
-                <Link 
+        <section id="mots-croises" className="animate-slide-in-left mt-12">
+          <Card className="bg-white p-6 shadow-lg">
+            <h2 className="mb-6 text-2xl font-bold text-gray-800">
+              Définitions de mots croisés
+              <span className="ml-2 text-lg font-normal text-gray-600">
+                ({crosswordDefinitions.length})
+              </span>
+            </h2>
+            <div className="space-y-4">
+              {crosswordDefinitions.map((def) => (
+                <Link
+                  key={def.id}
                   href={`/definition/${encodeURIComponent(def.definition.replace(/ /g, '*'))}`}
-                  className="text-gray-700 hover:text-blue-600 transition-colors"
+                  className="group block rounded-lg border border-gray-100 bg-gradient-to-r from-purple-50 to-blue-50 p-4 transition-all hover:scale-[1.01] hover:shadow-md"
                 >
-                  - {def.definition}
+                  <p className="text-gray-800">{def.definition}</p>
                 </Link>
-              </li>
-            ))}
-          </ul>
-        </Card>
+              ))}
+            </div>
+          </Card>
+        </section>
 
         {/* Expressions associées */}
-        <Card className="bg-white/95 p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4">
-            D'autres définitions intéressantes
-            <span className="text-gray-600 text-lg font-normal ml-2">
-              ({relatedExpressions.length})
-            </span>
-          </h2>
-          <ul className="space-y-4">
-            {relatedExpressions.map((expr) => (
-              <li key={expr.id} className="border-b border-gray-200 pb-4 last:border-0">
+        <section className="animate-slide-in-right mt-12">
+          <Card className="bg-white p-6 shadow-lg">
+            <h2 className="mb-6 text-2xl font-bold text-gray-800">
+              Expressions associées
+              <span className="ml-2 text-lg font-normal text-gray-600">
+                ({relatedExpressions.length})
+              </span>
+            </h2>
+            <div className="space-y-4">
+              {relatedExpressions.map((expr) => (
                 <Link
+                  key={expr.id}
                   href={`/definition/${encodeURIComponent(expr.expression.toLowerCase().replace(/ /g, '*'))}`}
-                  className="text-blue-600 hover:text-blue-800"
+                  className="group block rounded-lg border border-gray-100 bg-gradient-to-r from-purple-50 to-blue-50 p-4 transition-all hover:scale-[1.01] hover:shadow-md"
                 >
-                  - {expr.expression}
+                  <p className="text-gray-800">{expr.expression}</p>
                 </Link>
-              </li>
-            ))}
-          </ul>
-        </Card>
+              ))}
+            </div>
+          </Card>
+        </section>
 
         {/* Anagrammes */}
-        <Card id="anagrammes" className="bg-white/95 p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4">
-            {anagrams.length} ANAGRAMMES EN {word.word.length} LETTRES :
-          </h2>
-          <div className="flex flex-wrap gap-4">
-            {anagrams.map((anagram) => (
-              <Link
-                key={anagram}
-                href={`/word/${encodeURIComponent(anagram.toLowerCase())}`}
-                className="px-4 py-2 bg-green-100 text-green-700 rounded-full hover:bg-green-200 transition-colors"
-              >
-                {anagram}
-              </Link>
-            ))}
-          </div>
-        </Card>
+        <section id="anagrammes" className="animate-slide-in-left mt-12">
+          <Card className="bg-white p-6 shadow-lg">
+            <h2 className="mb-6 text-2xl font-bold text-gray-800">
+              Anagrammes
+              <span className="ml-2 text-lg font-normal text-gray-600">
+                ({anagrams.length})
+              </span>
+            </h2>
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {anagrams.map((anagram) => (
+                <Link
+                  key={anagram}
+                  href={`/word/${encodeURIComponent(anagram.toLowerCase())}`}
+                  className="group rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 p-4 text-center transition-all hover:scale-[1.02] hover:shadow-md"
+                >
+                  <span className="font-medium text-gray-800">{anagram}</span>
+                </Link>
+              ))}
+            </div>
+          </Card>
+        </section>
       </main>
     </div>
   )

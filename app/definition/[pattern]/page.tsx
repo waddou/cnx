@@ -16,7 +16,6 @@ interface PageProps {
 export default function DefinitionPage({ params }: PageProps) {
   const definition = decodeURIComponent(params.pattern).replace(/\*/g, " ")
   
-  // Trouver tous les mots qui ont cette définition
   const definitions = db.crosswordDefinitions.filter(d => d.definition === definition.toUpperCase())
   const allWords = definitions.map(d => db.findWordById(d.wordId)).filter(w => w !== undefined)
   
@@ -24,7 +23,6 @@ export default function DefinitionPage({ params }: PageProps) {
     notFound()
   }
 
-  // Grouper les mots par longueur
   const wordsByLength = allWords.reduce((acc, word) => {
     const length = word.word.length
     if (!acc[length]) {
@@ -34,137 +32,134 @@ export default function DefinitionPage({ params }: PageProps) {
     return acc
   }, {} as Record<number, typeof allWords>)
 
-  // Trier les longueurs
   const lengths = Object.keys(wordsByLength).map(Number).sort((a, b) => a - b)
-
-  // État pour le filtre de longueur sélectionné
   const [selectedLength, setSelectedLength] = useState<number | null>(null)
-
-  // Filtrer les mots selon la longueur sélectionnée
   const words = selectedLength ? wordsByLength[selectedLength] : allWords
 
+  // Trouver les définitions populaires (reliées à plus de 3 mots)
+  const popularDefinitions = db.crosswordDefinitions.reduce((acc, def) => {
+    acc[def.definition] = (acc[def.definition] || 0) + 1
+    return acc
+  }, {} as Record<string, number>)
+
+  const trendingDefinitions = Object.entries(popularDefinitions)
+    .filter(([_, count]) => count > 3)
+    .map(([definition]) => definition)
+    .slice(0, 6)
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-16">
-      <main className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <main className="container mx-auto px-4 py-12">
         {/* En-tête */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
-          <div>
-            <h1 className="text-4xl font-bold text-blue-800">
-              Solutions pour « {definition} »
-            </h1>
-            <p className="text-gray-600 mt-2">
-              {allWords.length} solutions de {lengths[0]} à {lengths[lengths.length - 1]} lettres
-            </p>
-          </div>
+        <div className="animate-fade-in mb-12 text-center">
+          <h1 className="mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-4xl font-extrabold text-transparent sm:text-5xl">
+            « {definition} »
+          </h1>
+          <p className="text-lg text-gray-600">
+            {allWords.length} solutions de {lengths[0]} à {lengths[lengths.length - 1]} lettres
+          </p>
         </div>
 
         {/* Filtre par nombre de lettres */}
-        <Card className="bg-white/95 p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4">
-            Filtrer par nombre de lettres
-          </h2>
-          <div className="flex flex-wrap gap-2">
-            <button 
-              onClick={() => setSelectedLength(null)}
-              className={`px-4 py-2 rounded-full transition-colors ${
-                selectedLength === null 
-                  ? "bg-blue-600 text-white" 
-                  : "bg-blue-50 text-blue-700 hover:bg-blue-200"
-              }`}
-            >
-              Tout
-            </button>
-            {lengths.map(length => (
-              <button
-                key={length}
-                onClick={() => setSelectedLength(length)}
-                className={`px-4 py-2 rounded-full transition-colors ${
-                  selectedLength === length 
-                    ? "bg-blue-600 text-white" 
-                    : "bg-blue-50 text-blue-700 hover:bg-blue-200"
+        <section className="animate-fade-in-up mb-12">
+          <Card className="bg-white p-6 shadow-lg">
+            <div className="flex flex-wrap gap-3">
+              <button 
+                onClick={() => setSelectedLength(null)}
+                className={`transform rounded-full px-6 py-2 text-sm font-medium transition-all hover:scale-105 ${
+                  selectedLength === null 
+                    ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md" 
+                    : "bg-gradient-to-r from-purple-50 to-blue-50 text-gray-700 hover:shadow-md"
                 }`}
               >
-                {length}
+                Tout
               </button>
-            ))}
-          </div>
-        </Card>
+              {lengths.map(length => (
+                <button
+                  key={length}
+                  onClick={() => setSelectedLength(length)}
+                  className={`transform rounded-full px-6 py-2 text-sm font-medium transition-all hover:scale-105 ${
+                    selectedLength === length 
+                      ? "bg-gradient-to-r from-purple-600 to-blue-600 text-white shadow-md" 
+                      : "bg-gradient-to-r from-purple-50 to-blue-50 text-gray-700 hover:shadow-md"
+                  }`}
+                >
+                  {length} lettres
+                </button>
+              ))}
+            </div>
+          </Card>
+        </section>
 
         {/* Liste des mots */}
-        <Card className="bg-white/95 p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4">
-            {words.length} réponses proposées
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {words.map((word) => {
-              const difficulty = db.difficulties.find(d => d.id === word.difficultyId)
-              return (
-                <Link
-                  key={word.id}
-                  href={`/word/${encodeURIComponent(word.word.toLowerCase())}`}
-                  className="group"
-                >
-                  <div className="p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <span className="text-xl font-semibold text-blue-800 group-hover:text-blue-900">
-                          {word.word}
+        <section className="animate-slide-in-left mb-12">
+          <Card className="bg-white p-6 shadow-lg">
+            <h2 className="mb-6 text-2xl font-bold text-gray-800">
+              Solutions proposées
+              <span className="ml-2 text-lg font-normal text-gray-600">
+                ({words.length})
+              </span>
+            </h2>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {words.map((word) => {
+                const difficulty = db.difficulties.find(d => d.id === word.difficultyId)
+                const category = db.categories.find(c => c.id === word.categoryId)
+                
+                return (
+                  <Link
+                    key={word.id}
+                    href={`/word/${encodeURIComponent(word.word.toLowerCase())}`}
+                    className="group rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 p-4 transition-all hover:scale-[1.02] hover:shadow-md"
+                  >
+                    <div className="flex items-center justify-between">
+                      <span className="text-xl font-semibold text-gray-800">
+                        {word.word}
+                      </span>
+                      <span className="rounded-full bg-white px-2 py-1 text-sm text-gray-600 shadow-sm">
+                        {word.word.length} lettres
+                      </span>
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {category && (
+                        <span className="rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-600">
+                          {category.name}
                         </span>
-                        <span className="text-gray-500 text-sm ml-2">
-                          ({word.word.length})
-                        </span>
-                      </div>
+                      )}
                       {difficulty && (
-                        <Badge variant={difficulty.id === 1 ? "default" : "destructive"}>
+                        <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-600">
                           {difficulty.name}
-                        </Badge>
+                        </span>
                       )}
                     </div>
-                  </div>
-                </Link>
-              )
-            })}
-          </div>
-        </Card>
+                  </Link>
+                )
+              })}
+            </div>
+          </Card>
+        </section>
 
         {/* Définitions du moment */}
-        <Card className="bg-white/95 p-6 mb-6">
-          <h2 className="text-2xl font-bold text-blue-800 mb-4">
-            Définitions du moment
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Link href="/definition/L*HOMME*DES*CLES" className="hover:text-blue-600">
-              L'HOMME DES CLÉS
-            </Link>
-            <Link href="/definition/UN*PEU*DE*CLARTE" className="hover:text-blue-600">
-              UN PEU DE CLARTÉ
-            </Link>
-            <Link href="/definition/VILLE*DE*MESOPOTAMIE" className="hover:text-blue-600">
-              VILLE DE MÉSOPOTAMIE
-            </Link>
-            <Link href="/definition/VEILLANT*AU*GAIN" className="hover:text-blue-600">
-              VEILLANT AU GAIN
-            </Link>
-            <Link href="/definition/IL*A*REVELE*DES*FONDS*SECRETS" className="hover:text-blue-600">
-              IL A RÉVÉLÉ DES FONDS SECRETS
-            </Link>
-            <Link href="/definition/GRAND*CREUX" className="hover:text-blue-600">
-              GRAND CREUX
-            </Link>
-            <Link href="/definition/EST*ALLONGE*POUR*DE*BON" className="hover:text-blue-600">
-              EST ALLONGÉ POUR DE BON
-            </Link>
-            <Link href="/definition/BON*PREMIER" className="hover:text-blue-600">
-              BON PREMIER
-            </Link>
-            <Link href="/definition/TELLE*QU*ON*L*ESPERE" className="hover:text-blue-600">
-              TELLE QU'ON L'ESPÈRE
-            </Link>
-            <Link href="/definition/TYPE*DE*TISSU" className="hover:text-blue-600">
-              TYPE DE TISSU
-            </Link>
-          </div>
-        </Card>
+        <section className="animate-slide-in-right">
+          <Card className="bg-white p-6 shadow-lg">
+            <h2 className="mb-6 text-2xl font-bold text-gray-800">
+              Définitions populaires
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {trendingDefinitions.map((def) => (
+                <Link
+                  key={def}
+                  href={`/definition/${encodeURIComponent(def.replace(/ /g, '*'))}`}
+                  className="group rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 p-4 transition-all hover:scale-[1.02] hover:shadow-md"
+                >
+                  <p className="text-gray-800">{def}</p>
+                  <p className="mt-2 text-sm text-gray-600">
+                    {popularDefinitions[def]} solutions
+                  </p>
+                </Link>
+              ))}
+            </div>
+          </Card>
+        </section>
       </main>
     </div>
   )

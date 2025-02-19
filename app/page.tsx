@@ -5,7 +5,6 @@ import Link from "next/link"
 export default function Home() {
   const recentWords = db.findRecentWords(10)
 
-  // Trouver les définitions populaires (reliées à plus de 3 mots)
   const definitionCounts = db.crosswordDefinitions.reduce((acc, def) => {
     acc[def.definition] = (acc[def.definition] || 0) + 1
     return acc
@@ -14,73 +13,95 @@ export default function Home() {
   const popularDefinitions = Object.entries(definitionCounts)
     .filter(([_, count]) => count > 3)
     .map(([definition]) => definition)
-    .slice(0, 6) // Limiter à 6 définitions
+    .slice(0, 6)
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-900 via-blue-600 to-blue-400 pt-16">
-      <main className="mx-auto max-w-4xl px-4 py-12">
-        <h1 className="mb-6 text-center text-3xl font-bold text-white">
-          Moteur de recherche pour mots croisés et mots fléchés
-        </h1>
-        <p className="mb-8 text-center text-blue-100">
-          Ce moteur est dédié à la recherche de mots spécifiquement pour les mots croisés et les mots fléchés.
-          C&apos;est un dictionnaire de mots croisés et de mots fléchés.
-        </p>
-
-        <SearchForm />
-
-        {popularDefinitions.length > 0 && (
-          <div className="mt-12">
-            <h2 className="mb-6 text-2xl font-semibold text-white">Définitions du moment</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {popularDefinitions.map((definition) => (
-                <Link
-                  key={definition}
-                  href={`/definition/${encodeURIComponent(definition.replace(/ /g, '*'))}`}
-                  className="block bg-white/95 rounded-lg p-4 hover:bg-white/100 transition-colors"
-                >
-                  <h3 className="text-lg font-medium text-blue-800">
-                    {definition}
-                  </h3>
-                  <p className="text-sm text-blue-600 mt-1">
-                    {definitionCounts[definition]} solutions
-                  </p>
-                </Link>
-              ))}
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      {/* Hero Section */}
+      <section className="relative overflow-hidden pt-20 pb-16">
+        <div className="container mx-auto px-4">
+          <div className="animate-fade-in text-center">
+            <h1 className="mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-4xl font-extrabold text-transparent sm:text-5xl">
+              Trouvez le mot parfait
+            </h1>
+            <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-600">
+              Notre moteur de recherche intelligent vous aide à résoudre vos grilles de mots croisés et mots fléchés en quelques clics.
+            </p>
           </div>
-        )}
 
-        {recentWords.length > 0 && (
-          <div className="mt-12">
-            <h2 className="mb-6 text-2xl font-semibold text-white">Derniers mots consultés</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {recentWords.map((word) => {
-                const category = db.categories.find(c => c.id === word.categoryId)
-                const difficulty = db.difficulties.find(d => d.id === word.difficultyId)
-                
-                return (
+          <div className="animate-fade-in-up">
+            <SearchForm />
+          </div>
+        </div>
+      </section>
+
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid gap-8 md:grid-cols-2">
+          {/* Popular Definitions Section */}
+          {popularDefinitions.length > 0 && (
+            <section className="animate-slide-in-left rounded-2xl bg-white p-6 shadow-lg">
+              <h2 className="mb-6 text-2xl font-bold text-gray-800">
+                Définitions populaires
+              </h2>
+              <div className="grid gap-4">
+                {popularDefinitions.map((definition) => (
                   <Link
-                    key={word.id}
-                    href={`/word/${encodeURIComponent(word.word.toLowerCase())}`}
-                    className="block bg-white/95 rounded-lg p-4 hover:bg-white/100 transition-colors"
+                    key={definition}
+                    href={`/definition/${encodeURIComponent(definition.replace(/ /g, '*'))}`}
+                    className="group rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 p-4 transition-all hover:scale-[1.02] hover:shadow-md"
                   >
-                    <h3 className="text-lg font-medium text-blue-800 mb-2">{word.word}</h3>
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">
-                        {category?.name}
-                      </span>
-                      <span className="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">
-                        {difficulty?.name}
-                      </span>
-                    </div>
+                    <h3 className="text-lg font-medium text-gray-800">
+                      {definition}
+                    </h3>
+                    <p className="mt-1 text-sm text-gray-600">
+                      {definitionCounts[definition]} solutions disponibles
+                    </p>
                   </Link>
-                )
-              })}
-            </div>
-          </div>
-        )}
-      </main>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* Recent Words Section */}
+          {recentWords.length > 0 && (
+            <section className="animate-slide-in-right rounded-2xl bg-white p-6 shadow-lg">
+              <h2 className="mb-6 text-2xl font-bold text-gray-800">
+                Dernières recherches
+              </h2>
+              <div className="grid gap-4">
+                {recentWords.map((word) => {
+                  const category = db.categories.find(c => c.id === word.categoryId)
+                  const difficulty = db.difficulties.find(d => d.id === word.difficultyId)
+                  
+                  return (
+                    <Link
+                      key={word.id}
+                      href={`/word/${encodeURIComponent(word.word.toLowerCase())}`}
+                      className="group rounded-xl bg-gradient-to-r from-purple-50 to-blue-50 p-4 transition-all hover:scale-[1.02] hover:shadow-md"
+                    >
+                      <h3 className="text-lg font-medium text-gray-800">
+                        {word.word}
+                      </h3>
+                      <div className="mt-2 flex flex-wrap gap-2">
+                        {category && (
+                          <span className="rounded-full bg-purple-100 px-3 py-1 text-xs font-medium text-purple-600">
+                            {category.name}
+                          </span>
+                        )}
+                        {difficulty && (
+                          <span className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-600">
+                            {difficulty.name}
+                          </span>
+                        )}
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
+            </section>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
