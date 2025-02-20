@@ -35,7 +35,7 @@ export default function PatternPage({ params }: PageProps) {
               Solutions pour {pattern}
             </h1>
             <p className="text-gray-600 mt-2">
-              Mots de {pattern.length} lettres commençant par {pattern.replace(/\*/g, "").toLowerCase()}
+              Mots de {pattern.length} lettres 
             </p>
           </div>
         </div>
