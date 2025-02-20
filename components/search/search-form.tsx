@@ -107,12 +107,19 @@ export function SearchForm() {
 
       <div className="rounded-lg border bg-white p-4 text-sm text-gray-600">
         <h3 className="mb-2 font-semibold">Comment chercher ?</h3>
-        <ul className="list-disc pl-5 space-y-1">
-          <li><span className="font-medium">ECLAIR</span> : Recherche le mot exact</li>
-          <li><span className="font-medium">AP***</span> : Mot de 5 lettres commençant par AP</li>
-          <li><span className="font-medium">AP_</span> : Tous les mots commençant par AP</li>
-          <li><span className="font-medium">COURRIER ECLAIR</span> : Recherche une définition</li>
-        </ul>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col items-center p-4 bg-blue-50 rounded-lg">
+            <ul className="list-disc pl-5 space-y-1">
+              <li><span className="font-medium">ECLAIR</span> : Recherche le mot exact</li>
+              <li><span className="font-medium">AP***</span> : Mot de 5 lettres commençant par AP</li>
+              <li><span className="font-medium">AP_</span> : Tous les mots commençant par AP</li>
+              <li><span className="font-medium">COURRIER ECLAIR</span> : Recherche une définition</li>
+            </ul>
+          </div>
+          <div class="flex flex-col items-center p-4 bg-blue-50 rounded-lg">
+            <span class="text-gray-600">Vous cherchez une réponse à la définition : "Anciennes mesures de grain "<br/>On saisit dans la barre de recherche la définition<br/>Ce qui donne ici : ANCIENNES*MESURES*DE*GRAIN</span>
+          </div>
+        </div>
       </div>
     </div>
   )
