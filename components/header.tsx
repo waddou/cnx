@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react"
 import { UserNav } from "@/components/auth/user-nav"
 
 export function Header() {
-  const { data: session } = useSession()
+  const { data: session, status } = useSession()
 
   return (
     <div className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900">
@@ -18,7 +18,9 @@ export function Header() {
           <span className="text-sm text-blue-100">pour les mots croisés</span>
         </Link>
         <div className="ml-auto flex items-center space-x-4">
-          {!session ? (
+          {status === "loading" ? (
+            <div className="h-8 w-8 animate-pulse rounded-full bg-blue-100/20" />
+          ) : !session ? (
             <>
               <Link 
                 href="/login" 

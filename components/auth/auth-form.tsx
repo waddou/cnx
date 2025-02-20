@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, type React } from "react"
+import { useState, useRef, type React } from "react"
 import { useRouter, useSearchParams } from "next/navigation"
 import { Github } from "lucide-react"
 import { toast } from "sonner"
@@ -22,6 +22,8 @@ export function AuthForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [isLoading, setIsLoading] = useState(false)
+  const loginFormRef = useRef<HTMLFormElement>(null)
+  const registerFormRef = useRef<HTMLFormElement>(null)
   const callbackUrl = searchParams.get("callbackUrl") || "/dashboard"
 
   async function handleRegister(data: AuthFormData) {
@@ -90,7 +92,11 @@ export function AuthForm() {
       const success = isRegister ? await handleRegister(data) : await handleLogin(data)
 
       if (success) {
-        event.currentTarget.reset()
+        if (isRegister && registerFormRef.current) {
+          registerFormRef.current.reset()
+        } else if (!isRegister && loginFormRef.current) {
+          loginFormRef.current.reset()
+        }
       }
     } finally {
       setIsLoading(false)
@@ -108,7 +114,7 @@ export function AuthForm() {
         </CardHeader>
         <CardContent className="space-y-4">
           <TabsContent value="login">
-            <form onSubmit={onSubmit} className="space-y-4">
+            <form ref={loginFormRef} onSubmit={onSubmit} className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
@@ -130,7 +136,7 @@ export function AuthForm() {
             </form>
           </TabsContent>
           <TabsContent value="register">
-            <form onSubmit={onSubmit} data-mode="register" className="space-y-4">
+            <form ref={registerFormRef} onSubmit={onSubmit} data-mode="register" className="space-y-4">
               <div className="space-y-2">
                 <Label htmlFor="username">Nom d&apos;utilisateur</Label>
                 <Input id="username" name="username" placeholder="votre_nom" required disabled={isLoading} />
@@ -177,4 +183,3 @@ export function AuthForm() {
     </Card>
   )
 }
-
