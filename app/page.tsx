@@ -1,4 +1,4 @@
-import { SearchForm } from "@/components/search-form"
+import { SearchForm } from "@/components/search/search-form"
 import { db } from "@/lib/data"
 import Link from "next/link"
 
