@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { SearchForm } from "@/components/search/search-form"
 
 interface PageProps {
   params: {
@@ -96,6 +97,11 @@ export default function DefinitionPage({ params }: PageProps) {
           <p className="text-lg text-gray-600">
             {allWords.length} solutions de {lengths[0]} à {lengths[lengths.length - 1]} lettres
           </p>
+        </div>
+
+        {/* Barre de recherche */}
+        <div className="animate-fade-in mb-8">
+          <SearchForm />
         </div>
 
         {/* Filtre par nombre de lettres */}

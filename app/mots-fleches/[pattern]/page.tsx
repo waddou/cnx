@@ -3,6 +3,7 @@ import Link from "next/link"
 import { db } from "@/lib/data"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
+import { SearchForm } from "@/components/search/search-form"
 
 interface PageProps {
   params: {
@@ -38,6 +39,11 @@ export default function PatternPage({ params }: PageProps) {
               Mots de {pattern.length} lettres 
             </p>
           </div>
+        </div>
+
+        {/* Barre de recherche */}
+        <div className="mb-8">
+          <SearchForm />
         </div>
 
         {/* Statistiques */}

@@ -3,6 +3,7 @@ import { db } from "@/lib/data"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ChevronLeft, ChevronRight } from "lucide-react"
+import { SearchForm } from "@/components/search/search-form"
 
 interface WordPageProps {
   params: {
@@ -85,6 +86,11 @@ export default function WordPage({ params }: WordPageProps) {
                 <ChevronRight className="h-4 w-4" />
               </Link>
             )}
+          </div>
+
+          {/* Barre de recherche */}
+          <div className="mb-8">
+            <SearchForm />
           </div>
 
           <div className="animate-fade-in mb-12 text-center">

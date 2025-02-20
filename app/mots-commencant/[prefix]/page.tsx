@@ -2,6 +2,7 @@ import { db } from "@/lib/data"
 import { ChevronLeft } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
+import { SearchForm } from "@/components/search/search-form"
 
 interface PageProps {
   params: {
@@ -39,6 +40,11 @@ export default function PrefixPage({ params }: PageProps) {
           <p className="mt-2 text-gray-600">
             {matchingWords.length} mot{matchingWords.length > 1 ? "s" : ""} trouvé{matchingWords.length > 1 ? "s" : ""}
           </p>
+        </div>
+
+        {/* Barre de recherche */}
+        <div className="mb-8">
+          <SearchForm />
         </div>
 
         {/* Grille de mots */}
