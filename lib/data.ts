@@ -1330,6 +1330,26 @@ export const db = {
       createdAt: "2024-02-01T00:00:00.000Z",
       updatedAt: null,
       status: "APPROVED"
+    },
+    {
+      id: 440,
+      word: "SIFFLER",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
+    },
+    {
+      id: 441,
+      word: "RAYER",
+      categoryId: 2,
+      difficultyId: 1,
+      createdBy: "system",
+      createdAt: "2024-02-01T00:00:00.000Z",
+      updatedAt: null,
+      status: "APPROVED"
     }
   ] as Word[],
 
@@ -2077,7 +2097,20 @@ export const db = {
       wordId: 428,
       definition: "OPERATION ECLAIR",
       createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 150,
+      wordId: 440,
+      definition: "OPERATION ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
+    },
+    {
+      id: 151,
+      wordId: 441,
+      definition: "OPERATION ECLAIR",
+      createdAt: "2024-02-01T00:00:00.000Z"
     }
+    
   ] as CrosswordDefinition[],
 
   relatedExpressions: [

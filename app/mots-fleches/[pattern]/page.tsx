@@ -26,6 +26,7 @@ export default function PatternPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white pt-16">
+      <div className="relative overflow-hidden pt-20 pb-16">
       <main className="container mx-auto px-4 py-8">
         {/* En-tête */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
@@ -131,6 +132,7 @@ export default function PatternPage({ params }: PageProps) {
           </div>
         </Card>
       </main>
+      </div>
     </div>
   )
 }

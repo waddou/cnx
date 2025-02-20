@@ -6,6 +6,7 @@ import { db } from "@/lib/data"
 import { Badge } from "@/components/ui/badge"
 import { Card } from "@/components/ui/card"
 import { useState } from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 interface PageProps {
   params: {
@@ -22,6 +23,13 @@ export default function DefinitionPage({ params }: PageProps) {
   if (allWords.length === 0) {
     notFound()
   }
+
+  // Trouver la définition précédente et suivante
+  const uniqueDefinitions = [...new Set(db.crosswordDefinitions.map(d => d.definition))]
+    .sort((a, b) => a.localeCompare(b))
+  const currentIndex = uniqueDefinitions.findIndex(d => d === definition.toUpperCase())
+  const previousDefinition = currentIndex > 0 ? uniqueDefinitions[currentIndex - 1] : null
+  const nextDefinition = currentIndex < uniqueDefinitions.length - 1 ? uniqueDefinitions[currentIndex + 1] : null
 
   const wordsByLength = allWords.reduce((acc, word) => {
     const length = word.word.length
@@ -49,7 +57,37 @@ export default function DefinitionPage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+      <div className="relative overflow-hidden pt-20 pb-16">
       <main className="container mx-auto px-4 py-12">
+        {/* Navigation */}
+        <div className="animate-fade-in mb-8 flex items-center justify-between">
+          {previousDefinition ? (
+            <Link
+              href={`/definition/${encodeURIComponent(previousDefinition.replace(/ /g, '*'))}`}
+              className="group flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm transition-all hover:scale-105 hover:shadow-md"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              <span className="max-w-[200px] truncate bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                {previousDefinition.toLowerCase()}
+              </span>
+            </Link>
+          ) : (
+            <div /> 
+          )}
+          
+          {nextDefinition && (
+            <Link
+              href={`/definition/${encodeURIComponent(nextDefinition.replace(/ /g, '*'))}`}
+              className="group flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-gray-600 shadow-sm transition-all hover:scale-105 hover:shadow-md"
+            >
+              <span className="max-w-[200px] truncate bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                {nextDefinition.toLowerCase()}
+              </span>
+              <ChevronRight className="h-4 w-4" />
+            </Link>
+          )}
+        </div>
+
         {/* En-tête */}
         <div className="animate-fade-in mb-12 text-center">
           <h1 className="mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-4xl font-extrabold text-transparent sm:text-5xl">
@@ -161,6 +199,7 @@ export default function DefinitionPage({ params }: PageProps) {
           </Card>
         </section>
       </main>
+      </div>
     </div>
   )
 }
